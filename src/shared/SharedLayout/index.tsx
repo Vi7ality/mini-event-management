@@ -1,5 +1,6 @@
 import { Suspense } from 'react';
 import { Outlet } from 'react-router-dom';
+import Footer from '../Footer';
 
 const SharedLayout = () => {
   return (
@@ -18,7 +19,7 @@ const SharedLayout = () => {
           {/* <ScrollToTop /> */}
         </Suspense>
       </main>
-      {/* <Footer /> */}
+      <Footer />
     </div>
   );
 };
