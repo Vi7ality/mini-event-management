@@ -10,7 +10,7 @@ interface TableRowProps {
   category: string;
   ticketCount: number;
   price: string;
-  notify(msg: string): void;
+  //   notify(msg: string): void;
 }
 
 const TableRow: React.FC<TableRowProps> = ({
@@ -20,7 +20,7 @@ const TableRow: React.FC<TableRowProps> = ({
   category,
   ticketCount,
   price,
-  notify,
+  //   notify,
 }) => {
   return (
     <tr className={styles.tableRow}>
@@ -32,10 +32,10 @@ const TableRow: React.FC<TableRowProps> = ({
       <td>{ticketCount}</td>
       <td>{price}</td>
       <td>
-        <button onClick={() => notify('Edit just clicked')}>
+        <button>
           <FaEdit />
         </button>
-        <button onClick={() => notify('Delete just clicked')}>
+        <button>
           <MdDeleteForever />
         </button>
       </td>

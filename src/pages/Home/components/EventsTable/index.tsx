@@ -15,7 +15,7 @@ const EventsTable: React.FC = ({ notify }: EventsTableProps) => {
         <TableHeader />
         <tbody>
           <TableRow
-            notify={notify}
+            // notify={notify}
             eventName="Концерт"
             date="20.07.25"
             time="15:00"
