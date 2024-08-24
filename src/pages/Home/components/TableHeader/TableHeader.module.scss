@@ -1,0 +1,21 @@
+.tableHeader {
+  background-color: #f8f9fa;
+  text-align: left;
+  font-weight: bold;
+  font-size: 1rem;
+
+  th {
+    padding: 0.75rem;
+  }
+
+  @media (max-width: 768px) {
+    font-size: 0.875rem; // Smaller font size for smaller screens
+  }
+
+  @media (max-width: 480px) {
+    font-size: 0.75rem; // Further reduce font size for very small screens
+    th {
+      padding: 0.5rem; // Reduce padding for smaller screens
+    }
+  }
+}
