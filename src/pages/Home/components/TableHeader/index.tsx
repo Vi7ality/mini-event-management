@@ -10,6 +10,7 @@ const TableHeader: React.FC = () => {
         <th>Категорія</th>
         <th>Кількість квитків</th>
         <th>Вартість</th>
+        <th>Дії</th>
       </tr>
     </thead>
   );
