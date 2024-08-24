@@ -4,13 +4,18 @@ import styles from './Table.module.scss';
 import Container from '../../../../shared/Container';
 import TableRow from '../TableRow';
 
-const EventsTable: React.FC = () => {
+interface EventsTableProps {
+  notify(msg: string): void;
+}
+
+const EventsTable: React.FC = ({ notify }: EventsTableProps) => {
   return (
     <Container>
       <table className={styles.table}>
         <TableHeader />
         <tbody>
           <TableRow
+            notify={notify}
             eventName="Концерт"
             date="20.07.25"
             time="15:00"
