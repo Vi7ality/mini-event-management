@@ -1,13 +1,10 @@
-import TableHeader from './components/TableHeader';
+import EventsTable from './components/EventsTable';
 
 const HomePage = () => {
   return (
     <>
       <h1>Home Page</h1>
-      <table>
-        <TableHeader />
-        <tbody>{/* Your table rows will go here */}</tbody>
-      </table>
+      <EventsTable />
     </>
   );
 };
