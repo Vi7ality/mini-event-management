@@ -1,37 +1,42 @@
 import { createSlice } from '@reduxjs/toolkit';
-import type { PayloadAction } from '@reduxjs/toolkit';
+import { eventType } from '../services/types';
+import { AxiosError } from 'axios';
+import { fetchEvents } from './operations';
 
-export interface eventState {
-  name: string;
-  image: string;
-  date: string;
-  time: string;
-  category: string;
-  tickets: number;
-  price: string;
-  description: string;
-  id: string;
+export interface iEventState {
+  data: eventType[];
+  isLoading: boolean;
+  error: AxiosError | null;
 }
 
-const initialState: eventState = {
-  name: '',
-  image: '',
-  date: '',
-  time: '',
-  category: '',
-  tickets: 1,
-  price: '805.00',
-  description: 'Officiis tempora sed.',
-  id: '1',
+const initialState: iEventState = {
+  data: [],
+  isLoading: false,
+  error: null,
 };
 
-export const eventSlice = createSlice({
-  name: 'event',
+const handlePending = (state: iEventState) => {
+  state.isLoading = true;
+};
+const handleRejected = (state: iEventState, action) => {
+  state.isLoading = false;
+  state.error = action.payload;
+};
+
+export const eventsSlice = createSlice({
+  name: 'events',
   initialState,
-  reducers: {},
+  extraReducers: {
+    [fetchEvents.pending]: handlePending,
+    [fetchEvents.rejected]: handleRejected,
+    [fetchEvents.fulfilled](state, action) {
+      state.isLoading: false;
+      state.error = null;
+      state.data = action.payload;
+    }
+  },
 });
 
-// Action creators are generated for each case reducer function
-export const {} = eventSlice.actions;
+export const eventsReducer = eventsSlice.actions;
 
-export default eventSlice.reducer;
+export default eventsSlice.reducer;
