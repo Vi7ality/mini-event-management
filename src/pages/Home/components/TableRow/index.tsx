@@ -2,6 +2,7 @@ import React from 'react';
 import styles from './TableRow.module.scss';
 import { MdDeleteForever } from 'react-icons/md';
 import { Link } from 'react-router-dom';
+import { useDeleteEventMutation } from '../../../../services/api';
 
 interface TableRowProps {
   eventName: string;
@@ -22,6 +23,10 @@ const TableRow: React.FC<TableRowProps> = ({
   id,
   //   notify,
 }) => {
+  const [deleteEvent] = useDeleteEventMutation();
+  const handleDeleteEvent = async () => {
+    deleteEvent(id);
+  };
   return (
     <tr className={styles.tableRow}>
       <td>
@@ -32,7 +37,7 @@ const TableRow: React.FC<TableRowProps> = ({
       <td>{ticketCount}</td>
       <td>{price}</td>
       <td>
-        <button>
+        <button onClick={() => handleDeleteEvent()}>
           <MdDeleteForever />
         </button>
       </td>
