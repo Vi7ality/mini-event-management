@@ -1,3 +1,4 @@
+import { FaEdit } from 'react-icons/fa';
 import styles from './EventInfo.module.scss';
 
 interface IEventInfo {
@@ -7,6 +8,7 @@ interface IEventInfo {
   tickets: number;
   price: string;
   description: string;
+  setIsEditing(arg: boolean): void;
 }
 
 const EventInfo = ({
@@ -16,6 +18,7 @@ const EventInfo = ({
   tickets,
   price,
   description,
+  setIsEditing,
 }: IEventInfo) => {
   const formattedDate = new Date(date).toLocaleDateString();
   return (
@@ -36,6 +39,10 @@ const EventInfo = ({
       <p>
         <strong>Description:</strong> {description}
       </p>
+      <button onClick={() => setIsEditing(true)}>
+        <FaEdit />
+        Edit the event
+      </button>
     </div>
   );
 };
