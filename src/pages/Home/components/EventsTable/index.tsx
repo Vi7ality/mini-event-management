@@ -3,11 +3,6 @@ import TableHeader from '../TableHeader';
 import styles from './Table.module.scss';
 import Container from '../../../../shared/Container';
 import TableRow from '../TableRow';
-import { useDispatch, useSelector } from 'react-redux';
-import eventSlice from '../../../../store/eventsSlice';
-import { selectEvents } from '../../../../store/selectors';
-import { RootState } from '@reduxjs/toolkit/query';
-import { AppDispatch } from '../../../../store/store';
 import { useGetAllEventsQuery } from '../../../../services/api';
 
 interface EventsTableProps {
