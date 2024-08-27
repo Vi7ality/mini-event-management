@@ -11,7 +11,7 @@ function App() {
       <Routes>
         <Route path="/" element={<SharedLayout />}>
           <Route index path="/" element={<HomePage />} />
-          <Route path="/:eventId" element={<EventPage />} />
+          <Route path="/:eventID" element={<EventPage />} />
         </Route>
       </Routes>
     </BrowserRouter>
