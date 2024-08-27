@@ -1,9 +1,19 @@
+import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react';
+import type { eventType } from './types';
+
 const API_URL = 'https://66c98b018a477f50dc30ec28.mockapi.io/api';
 
-import axios, { AxiosInstance } from 'axios';
-
-const api: AxiosInstance = axios.create({
-  baseURL: API_URL,
+export const eventApi = createApi({
+  reducerPath: 'events',
+  baseQuery: fetchBaseQuery({ baseUrl: API_URL }),
+  endpoints: builder => ({
+    getAllEvents: builder.query<eventType[], void>({
+      query: () => `events`,
+    }),
+    getEvent: builder.query<eventType, string>({
+      query: id => `events/${id}`,
+    }),
+  }),
 });
 
-export const getEventList = api.get('/events');
+export const { useGetAllEventsQuery } = eventApi;

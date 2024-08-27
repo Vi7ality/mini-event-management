@@ -6,15 +6,19 @@
   color: #ffffff;
 }
 
-.footer-text {
+.footerText {
   font-size: 0.875rem;
+  display: flex;
+  justify-content: center;
 }
 
-.footer-link {
+.footerLink {
   color: #63b3ed;
   text-decoration: none;
+  color: yellow;
+  margin-left: 5px;
 }
 
-.footer-link:hover {
-  color: #90cdf4;
+.footerLink:hover {
+  color: orange;
 }

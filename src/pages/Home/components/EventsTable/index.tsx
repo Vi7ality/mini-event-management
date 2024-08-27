@@ -8,7 +8,7 @@ import eventSlice from '../../../../store/eventsSlice';
 import { selectEvents } from '../../../../store/selectors';
 import { RootState } from '@reduxjs/toolkit/query';
 import { AppDispatch } from '../../../../store/store';
-import { useGetAllEventsQuery } from '../../../../services/events';
+import { useGetAllEventsQuery } from '../../../../services/api';
 
 interface EventsTableProps {
   notify(msg: string): void;
