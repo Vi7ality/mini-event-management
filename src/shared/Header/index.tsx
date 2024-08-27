@@ -1,3 +1,4 @@
+import { Link } from 'react-router-dom';
 import Container from '../Container';
 import style from './Header.module.scss';
 
@@ -6,18 +7,18 @@ const Header: React.FC = () => {
     <Container>
       <header className={style.header}>
         <div className={style.logo}>
-          <a href="/">Logo</a>
+          <Link to="/">Logo</Link>
         </div>
         <nav className={style.nav}>
           <ul>
             <li>
-              <a href="/">Home</a>
+              <Link to="/">Home</Link>
             </li>
             <li>
-              <a href="/contacts">Contacts</a>
+              <Link to="/contacts">Contacts</Link>
             </li>
             <li>
-              <a href="/create-event">+ Add new event</a>
+              <Link to="/create-event">+ Add new event</Link>
             </li>
           </ul>
         </nav>

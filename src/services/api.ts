@@ -23,6 +23,13 @@ export const eventApi = createApi({
         body: patch,
       }),
     }),
+    createEvent: builder.mutation<eventType, Partial<eventType>>({
+      query: newEvent => ({
+        url: `events`,
+        method: 'POST',
+        body: newEvent,
+      }),
+    }),
   }),
 });
 
@@ -30,4 +37,5 @@ export const {
   useGetAllEventsQuery,
   useGetEventQuery,
   useUpdateEventMutation,
+  useCreateEventMutation,
 } = eventApi;

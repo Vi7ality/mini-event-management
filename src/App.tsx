@@ -1,9 +1,12 @@
 import './App.css';
+import 'react-toastify/dist/ReactToastify.css';
+import { lazy } from 'react';
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import HomePage from './pages/Home';
 import SharedLayout from './shared/SharedLayout';
-import EventPage from './pages/EventPage';
-import 'react-toastify/dist/ReactToastify.css';
+
+const AddEventPage = lazy(() => import('./pages/AddEventPage'));
+const EventPage = lazy(() => import('./pages/EventPage'));
 
 function App() {
   return (
@@ -12,6 +15,7 @@ function App() {
         <Route path="/" element={<SharedLayout />}>
           <Route index path="/" element={<HomePage />} />
           <Route path="/:eventID" element={<EventPage />} />
+          <Route path="/create-event" element={<AddEventPage />} />
         </Route>
       </Routes>
     </BrowserRouter>
