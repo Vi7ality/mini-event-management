@@ -15,7 +15,7 @@ interface EventsTableProps {
 }
 
 const EventsTable: React.FC = ({ notify }: EventsTableProps) => {
-  const { data, error, isLoading } = useGetAllEventsQuery();
+  const { data } = useGetAllEventsQuery();
   console.log(data);
   return (
     <Container>
@@ -31,6 +31,7 @@ const EventsTable: React.FC = ({ notify }: EventsTableProps) => {
               category={event.category}
               ticketCount={event.tickets}
               price={event.price}
+              id={event.id}
             />
           ))}
         </tbody>
