@@ -8,7 +8,16 @@ import styles from './EventPage.module.scss';
 const EventPage = () => {
   const { eventID } = useParams<{ eventID: string }>();
   const { data, error, isLoading } = useGetEventQuery(eventID);
-  console.log('data', data);
+  const [updateEvent] = useUpdateEventMutation();
+  const [isEditing, setIsEditing] = useState(false);
+  const [formData, setFormData] = useState({
+    name: '',
+    date: '',
+    category: '',
+    tickets: '',
+    price: '',
+    description: '',
+  });
   return (
     <Container>
       {data && (

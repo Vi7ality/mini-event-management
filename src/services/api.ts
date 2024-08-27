@@ -13,7 +13,21 @@ export const eventApi = createApi({
     getEvent: builder.query<eventType, string>({
       query: id => `events/${id}`,
     }),
+    updateEvent: builder.mutation<
+      eventType,
+      Partial<eventType> & { id: string }
+    >({
+      query: ({ id, ...patch }) => ({
+        url: `events/${id}`,
+        method: 'PUT',
+        body: patch,
+      }),
+    }),
   }),
 });
 
-export const { useGetAllEventsQuery, useGetEventQuery } = eventApi;
+export const {
+  useGetAllEventsQuery,
+  useGetEventQuery,
+  useUpdateEventMutation,
+} = eventApi;
