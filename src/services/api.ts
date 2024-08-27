@@ -1,4 +1,4 @@
-const API_URL = 'https://66c98b018a477f50dc30ec28.mockapi.io';
+const API_URL = 'https://66c98b018a477f50dc30ec28.mockapi.io/api';
 
 import axios, { AxiosInstance } from 'axios';
 

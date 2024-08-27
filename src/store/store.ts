@@ -1,11 +1,13 @@
 import { configureStore } from '@reduxjs/toolkit';
-import { eventsReducer } from './eventSlice';
+import { setupListeners } from '@reduxjs/toolkit/query';
+import { eventApi } from '../services/events';
 
 export const store = configureStore({
   reducer: {
-    events: eventsReducer,
+    [eventApi.reducerPath]: eventApi.reducer,
   },
+  middleware: getDefaultMiddleware =>
+    getDefaultMiddleware().concat(eventApi.middleware),
 });
 
-export type RootState = ReturnType<typeof store.getState>;
-export type AppDispatch = typeof store.dispatch;
+setupListeners(store.dispatch);

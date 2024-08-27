@@ -6,7 +6,6 @@ import { MdDeleteForever } from 'react-icons/md';
 interface TableRowProps {
   eventName: string;
   date: string;
-  time: string;
   category: string;
   ticketCount: number;
   price: string;
@@ -16,7 +15,6 @@ interface TableRowProps {
 const TableRow: React.FC<TableRowProps> = ({
   eventName,
   date,
-  time,
   category,
   ticketCount,
   price,
@@ -25,9 +23,7 @@ const TableRow: React.FC<TableRowProps> = ({
   return (
     <tr className={styles.tableRow}>
       <td>{eventName}</td>
-      <td>
-        {date} {time}
-      </td>
+      <td>{date}</td>
       <td>{category}</td>
       <td>{ticketCount}</td>
       <td>{price}</td>
