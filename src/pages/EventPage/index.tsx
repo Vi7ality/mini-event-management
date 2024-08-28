@@ -9,7 +9,7 @@ import EditEventForm from './components/EditEventForm';
 
 const EventPage = () => {
   const { eventID } = useParams<{ eventID: string }>();
-  const { data, error, isLoading } = useGetEventQuery(eventID);
+  const { data } = useGetEventQuery(eventID);
   const [updateEvent] = useUpdateEventMutation();
   const [isEditing, setIsEditing] = useState(false);
   const [formData, setFormData] = useState({
