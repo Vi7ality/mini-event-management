@@ -1,0 +1,1 @@
+import{j as o,L as s}from"./index-DeWHmX4M.js";const e="_notFound_1w8tv_1",t="_homeLink_1w8tv_18",n={notFound:e,homeLink:t},d=()=>o.jsxs("div",{className:n.notFound,children:[o.jsx("h1",{children:"404"}),o.jsx("p",{children:"Oops! The page you're looking for doesn't exist."}),o.jsx(s,{to:"/",className:n.homeLink,children:"Go Back Home"})]});export{d as default};
