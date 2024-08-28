@@ -7,7 +7,10 @@ const Header: React.FC = () => {
     <Container>
       <header className={style.header}>
         <div className={style.logo}>
-          <Link to="/">Logo</Link>
+          <Link to="/" style={{ display: 'flex', alignItems: 'center' }}>
+            <img src="/calendar.png" />
+            Event manager
+          </Link>
         </div>
         <nav className={style.nav}>
           <ul>

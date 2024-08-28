@@ -12,7 +12,7 @@ import { eventType } from '../../services/types';
 
 const EventPage = () => {
   const { eventID } = useParams<{ eventID: string }>();
-  const { data, isLoading, isError } = useGetEventQuery(eventID!);
+  const { data, isError } = useGetEventQuery(eventID!);
   const [updateEvent] = useUpdateEventMutation();
   const [isEditing, setIsEditing] = useState(false);
   const [formData, setFormData] = useState<eventType>({
@@ -71,8 +71,7 @@ const EventPage = () => {
     }
   };
 
-  if (isLoading) return <div>Loading...</div>;
-  if (isError) return <div>Error loading event data.</div>;
+  if (isError) return toast.error('Oops! Something went wrong');
 
   return (
     <Container>

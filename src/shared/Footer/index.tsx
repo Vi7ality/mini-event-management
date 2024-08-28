@@ -8,7 +8,7 @@ const Footer = () => {
         <p className={styles.footerText}>
           &copy; {new Date().getFullYear()} Developed by{' '}
           <a
-            href="https://github.com/Vi7ality"
+            href="https://github.com/Vi7ality/mini-event-management"
             target="_blank"
             rel="noopener noreferrer"
             className={styles.footerLink}

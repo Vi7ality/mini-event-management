@@ -52,8 +52,12 @@ const TableRow: React.FC<TableRowProps> = ({
       <td>{ticketCount}</td>
       <td>{price}</td>
       <td>
-        <button onClick={() => handleDeleteEvent()} title="Delete event">
-          <MdDeleteForever />
+        <button
+          className={styles.deleteBtn}
+          onClick={() => handleDeleteEvent()}
+          title="Видалити івент"
+        >
+          <MdDeleteForever style={{ width: '20px', height: '20px' }} />
         </button>
       </td>
     </tr>
