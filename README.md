@@ -1,50 +1,106 @@
-# React + TypeScript + Vite
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+# Mini Event Manager
 
-Currently, two official plugins are available:
+![GitHub Pages Deployment](https://img.shields.io/badge/GitHub%20Pages-Deploy-success)
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+A simple event management application built with React and Vite, allowing users to view, add, edit, and delete events. This project is deployed using GitHub Pages.
 
-## Expanding the ESLint configuration
+## Table of Contents
 
-If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
+- [Demo](#demo)
+- [Features](#features)
+- [Tech Stack](#tech-stack)
+- [Getting Started](#getting-started)
+- [Scripts](#scripts)
+- [Deploying to GitHub Pages](#deploying-to-github-pages)
 
-- Configure the top-level `parserOptions` property like this:
+## Demo
 
-```js
-export default tseslint.config({
-  languageOptions: {
-    // other options...
-    parserOptions: {
-      project: ['./tsconfig.node.json', './tsconfig.app.json'],
-      tsconfigRootDir: import.meta.dirname,
-    },
-  },
-})
-```
+Check out the live demo of the project [here](https://mini-event-management.vercel.app/).
 
-- Replace `tseslint.configs.recommended` to `tseslint.configs.recommendedTypeChecked` or `tseslint.configs.strictTypeChecked`
-- Optionally add `...tseslint.configs.stylisticTypeChecked`
-- Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and update the config:
+## Features
 
-```js
-// eslint.config.js
-import react from 'eslint-plugin-react'
+- View a list of events
+- Add new events
+- Edit existing events
+- Delete events
+- Responsive design for mobile and desktop
 
-export default tseslint.config({
-  // Set the react version
-  settings: { react: { version: '18.3' } },
-  plugins: {
-    // Add the react plugin
-    react,
-  },
-  rules: {
-    // other rules...
-    // Enable its recommended rules
-    ...react.configs.recommended.rules,
-    ...react.configs['jsx-runtime'].rules,
-  },
-})
-```
+## Tech Stack
+
+- **Frontend:**
+  - React
+  - TypeScript
+  - Vite
+  - Redux Toolkit Query
+  - React Router
+  - SCSS Modules
+  - Toastify for notifications
+
+- **Backend:**
+  - MockAPI (used for simulating API requests)
+
+## Getting Started
+
+### Prerequisites
+
+Make sure you have Node.js and npm installed on your machine.
+
+### Installation
+
+1. **Clone the repository:**
+
+   \`\`\`bash
+   git clone https://github.com/username/mini-event-manager.git
+   cd mini-event-manager
+   \`\`\`
+
+2. **Install dependencies:**
+
+   \`\`\`bash
+   npm install
+   \`\`\`
+
+3. **Start the development server:**
+
+   \`\`\`bash
+   npm run dev
+   \`\`\`
+
+   Your app should now be running on [http://localhost:5173](http://localhost:5173).
+
+## Scripts
+
+- **\`npm run dev\`**: Starts the development server.
+- **\`npm run build\`**: Builds the app for production.
+- **\`npm run preview\`**: Previews the production build locally.
+- **\`npm run deploy\`**: Deploys the build to GitHub Pages.
+
+## Deploying to GitHub Pages
+
+1. **Update the \`vite.config.ts\`:**
+   Ensure the \`base\` option is set to the correct path:
+
+   \`\`\`typescript
+   export default defineConfig({
+     plugins: [react()],
+     base: '/mini-event-manager/', // Ensure this matches your repo name
+   });
+   \`\`\`
+
+2. **Build the project:**
+
+   \`\`\`bash
+   npm run build
+   \`\`\`
+
+3. **Deploy to GitHub Pages:**
+
+   \`\`\`bash
+   npm run deploy
+   \`\`\`
+
+4. **Visit the deployed site:**
+   The app is available at \`https://mini-event-management.vercel.app/\`.
+
+
