@@ -1,3 +1,5 @@
+import styles from './EditEventForm.module.scss';
+
 interface IEditEventForm {
   name: string;
   date: string;
@@ -22,7 +24,7 @@ const EditEventForm = ({
   handleSave,
 }: IEditEventForm) => {
   return (
-    <form>
+    <form className={styles.editForm}>
       <input type="text" name="name" value={name} onChange={handleChange} />
       <input type="date" name="date" value={date} onChange={handleChange} />
       <input
