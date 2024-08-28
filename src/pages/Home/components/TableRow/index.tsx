@@ -3,6 +3,7 @@ import styles from './TableRow.module.scss';
 import { MdDeleteForever } from 'react-icons/md';
 import { Link } from 'react-router-dom';
 import { useDeleteEventMutation } from '../../../../services/api';
+import { toast } from 'react-toastify';
 
 interface TableRowProps {
   eventName: string;
@@ -30,7 +31,16 @@ const TableRow: React.FC<TableRowProps> = ({
     minute: '2-digit',
   });
   const handleDeleteEvent = async () => {
-    deleteEvent(id);
+    try {
+      await deleteEvent(id).unwrap();
+      toast.success('X Event deleted successfully!');
+    } catch (error) {
+      if (error instanceof Error) {
+        toast.error(`Error! ${error.message}`);
+      } else {
+        toast.error('An unknown error occurred.');
+      }
+    }
   };
   return (
     <tr className={styles.tableRow}>

@@ -11,7 +11,7 @@ const EventsTable: React.FC = () => {
   if ((!isLoading && !data) || data?.length === 0) {
     return (
       <Container>
-        <div>No events available.</div>
+        <h2>No events available.</h2>
       </Container>
     );
   }

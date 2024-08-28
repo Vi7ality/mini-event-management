@@ -8,7 +8,7 @@ interface IEventInfo {
   tickets: number;
   price: string;
   description: string;
-  setIsEditing(arg: boolean): void;
+  setIsEditing(): void;
 }
 
 const EventInfo = ({
@@ -46,7 +46,7 @@ const EventInfo = ({
       <p>
         <strong>Description:</strong> {description}
       </p>
-      <button onClick={() => setIsEditing(true)}>
+      <button onClick={() => setIsEditing()}>
         <FaEdit />
         Edit the event
       </button>

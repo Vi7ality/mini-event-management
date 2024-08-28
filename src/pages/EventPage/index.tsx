@@ -4,35 +4,43 @@ import { useParams } from 'react-router-dom';
 import EventInfo from './components/EventInfo';
 import Container from '../../shared/Container';
 import styles from './EventPage.module.scss';
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 import EditEventForm from './components/EditEventForm';
+import { toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+import { eventType } from '../../services/types';
 
 const EventPage = () => {
   const { eventID } = useParams<{ eventID: string }>();
-  const { data } = useGetEventQuery(eventID);
+  const { data, isLoading, isError } = useGetEventQuery(eventID!);
   const [updateEvent] = useUpdateEventMutation();
   const [isEditing, setIsEditing] = useState(false);
-  const [formData, setFormData] = useState({
+  const [formData, setFormData] = useState<eventType>({
+    id: eventID || '',
     name: '',
     date: '',
     category: '',
-    tickets: '',
+    tickets: 0,
     price: '',
+    image: '',
     description: '',
   });
 
-  useEffect(() => {
-    if (data) {
+  const onEditFormOpen = () => {
+    if (data && eventID) {
+      setIsEditing(true);
       setFormData({
+        id: eventID,
         name: data.name,
         date: data.date,
         category: data.category,
-        tickets: data.tickets.toString(),
+        tickets: data.tickets,
         price: data.price,
+        image: data.image,
         description: data.description,
       });
     }
-  }, [data]);
+  };
 
   const handleChange = (
     e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
@@ -45,13 +53,26 @@ const EventPage = () => {
   };
 
   const handleSave = async () => {
+    if (!eventID) {
+      toast.error('Event ID is missing.');
+      return;
+    }
+
     try {
-      await updateEvent({ id: eventID, ...formData }).unwrap();
+      await updateEvent(formData).unwrap();
       setIsEditing(false);
+      toast.success('Event edited successfully!');
     } catch (error) {
-      console.error('Failed to update event:', error);
+      if (error instanceof Error) {
+        toast.error(`Error! ${error.message}`);
+      } else {
+        toast.error('An unknown error occurred.');
+      }
     }
   };
+
+  if (isLoading) return <div>Loading...</div>;
+  if (isError) return <div>Error loading event data.</div>;
 
   return (
     <Container>
@@ -60,12 +81,13 @@ const EventPage = () => {
           <EventImage name={data.name} image={data.image} />
           {isEditing ? (
             <EditEventForm
-              name={formData.name}
-              date={formData.date}
-              category={formData.category}
-              tickets={formData.tickets}
-              price={formData.price}
-              description={formData.description}
+              name={formData.name || ''}
+              date={formData.date || ''}
+              category={formData.category || ''}
+              tickets={formData.tickets || 0}
+              price={formData.price || ''}
+              image={formData.image || ''}
+              description={formData.description || ''}
               handleChange={handleChange}
               handleSave={handleSave}
             />
@@ -77,7 +99,7 @@ const EventPage = () => {
               category={data.category}
               tickets={data.tickets}
               price={data.price}
-              setIsEditing={setIsEditing}
+              setIsEditing={onEditFormOpen}
             />
           )}
         </div>

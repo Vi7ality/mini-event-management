@@ -10,7 +10,7 @@ const AddEventPage: React.FC = () => {
     date: '',
     image: '',
     category: '',
-    tickets: '',
+    tickets: 0,
     price: '',
     description: '',
   });

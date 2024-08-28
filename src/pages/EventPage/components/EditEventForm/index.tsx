@@ -4,9 +4,10 @@ interface IEditEventForm {
   name: string;
   date: string;
   category: string;
-  tickets: string;
+  tickets: number;
   price: string;
   description: string;
+  image: string;
   handleChange(
     e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
   ): void;
@@ -15,37 +16,66 @@ interface IEditEventForm {
 
 const EditEventForm = ({
   name,
-  date,
+  // date,
   category,
   tickets,
   price,
   description,
+  image,
   handleChange,
   handleSave,
 }: IEditEventForm) => {
   return (
-    <form className={styles.editForm}>
-      <input type="text" name="name" value={name} onChange={handleChange} />
-      <input type="date" name="date" value={date} onChange={handleChange} />
+    <form
+      onSubmit={e => {
+        e.preventDefault();
+        handleSave();
+      }}
+      className={styles.editForm}
+    >
+      <input
+        type="text"
+        name="name"
+        value={name}
+        onChange={handleChange}
+        required
+      />
+      {/* <input
+        type="date"
+        name="date"
+        value={date}
+        onChange={handleChange}
+        required
+      /> */}
       <input
         type="text"
         name="category"
         value={category}
         onChange={handleChange}
+        required
       />
       <input
         type="number"
         name="tickets"
         value={tickets}
         onChange={handleChange}
+        required
       />
-      <input type="text" name="price" value={price} onChange={handleChange} />
+      <input
+        type="text"
+        name="price"
+        value={price}
+        onChange={handleChange}
+        required
+      />
+      <input type="text" name="image" value={image} onChange={handleChange} />
       <textarea
         name="description"
         value={description}
         onChange={handleChange}
+        required
       />
-      <button onClick={handleSave}>Save</button>
+      <button type="submit">Save</button>
     </form>
   );
 };

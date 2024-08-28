@@ -2,6 +2,7 @@ import { Suspense } from 'react';
 import { Outlet } from 'react-router-dom';
 import Footer from '../Footer';
 import Header from '../Header';
+import { ToastContainer } from 'react-toastify';
 
 const SharedLayout = () => {
   return (
@@ -23,6 +24,7 @@ const SharedLayout = () => {
         </Suspense>
       </main>
       <Footer />
+      <ToastContainer />
     </div>
   );
 };
