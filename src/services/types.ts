@@ -1,5 +1,3 @@
-import { AxiosError } from 'axios';
-
 export type eventType = {
   name: string;
   image: string;
@@ -15,6 +13,6 @@ export type stateType = {
   events: {
     data: eventType[];
     isLoading: boolean;
-    error: AxiosError | null;
+    error: Error;
   };
 };
