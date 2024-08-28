@@ -45,7 +45,7 @@ const TableRow: React.FC<TableRowProps> = ({
   return (
     <tr className={styles.tableRow}>
       <td>
-        <Link to={`/${id}`}>{eventName}</Link>
+        <Link to={`events/${id}`}>{eventName}</Link>
       </td>
       <td>{formattedDate}</td>
       <td>{category}</td>

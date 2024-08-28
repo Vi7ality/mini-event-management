@@ -6,6 +6,7 @@ import SharedLayout from './shared/SharedLayout';
 const HomePage = lazy(() => import('./pages/Home'));
 const AddEventPage = lazy(() => import('./pages/AddEventPage'));
 const EventPage = lazy(() => import('./pages/EventPage'));
+const NotFound = lazy(() => import('./pages/NotFound'));
 
 function App() {
   return (
@@ -13,9 +14,10 @@ function App() {
       <Routes>
         <Route path="/" element={<SharedLayout />}>
           <Route index path="/" element={<HomePage />} />
-          <Route path="/:eventID" element={<EventPage />} />
+          <Route path="events/:eventID" element={<EventPage />} />
           <Route path="/create-event" element={<AddEventPage />} />
         </Route>
+        <Route path="*" element={<NotFound />} />
       </Routes>
     </BrowserRouter>
   );

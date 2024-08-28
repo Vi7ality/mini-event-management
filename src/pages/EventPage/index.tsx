@@ -71,7 +71,7 @@ const EventPage = () => {
     }
   };
 
-  if (isError) return toast.error('Oops! Something went wrong');
+  if (isError) return toast.error('Oops! Seems this event not exist');
 
   return (
     <Container>
