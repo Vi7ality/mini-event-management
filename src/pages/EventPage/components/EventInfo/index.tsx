@@ -21,11 +21,18 @@ const EventInfo = ({
   setIsEditing,
 }: IEventInfo) => {
   const formattedDate = new Date(date).toLocaleDateString();
+  const formattedTime = new Date(date).toLocaleTimeString([], {
+    hour: '2-digit',
+    minute: '2-digit',
+  });
   return (
     <div className={styles.details}>
       <h1>{name}</h1>
       <p>
         <strong>Date:</strong> {formattedDate}
+      </p>
+      <p>
+        <strong>Time:</strong> {formattedTime}
       </p>
       <p>
         <strong>Category:</strong> {category}

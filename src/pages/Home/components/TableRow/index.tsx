@@ -11,7 +11,6 @@ interface TableRowProps {
   ticketCount: number;
   price: string;
   id: string;
-  //   notify(msg: string): void;
 }
 
 const TableRow: React.FC<TableRowProps> = ({
@@ -21,9 +20,15 @@ const TableRow: React.FC<TableRowProps> = ({
   ticketCount,
   price,
   id,
-  //   notify,
 }) => {
   const [deleteEvent] = useDeleteEventMutation();
+  const formattedDate = new Date(date).toLocaleString('default', {
+    day: '2-digit',
+    month: '2-digit',
+    year: 'numeric',
+    hour: '2-digit',
+    minute: '2-digit',
+  });
   const handleDeleteEvent = async () => {
     deleteEvent(id);
   };
@@ -32,12 +37,12 @@ const TableRow: React.FC<TableRowProps> = ({
       <td>
         <Link to={`/${id}`}>{eventName}</Link>
       </td>
-      <td>{date}</td>
+      <td>{formattedDate}</td>
       <td>{category}</td>
       <td>{ticketCount}</td>
       <td>{price}</td>
       <td>
-        <button onClick={() => handleDeleteEvent()}>
+        <button onClick={() => handleDeleteEvent()} title="Delete event">
           <MdDeleteForever />
         </button>
       </td>

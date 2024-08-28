@@ -5,13 +5,17 @@ import Container from '../../../../shared/Container';
 import TableRow from '../TableRow';
 import { useGetAllEventsQuery } from '../../../../services/api';
 
-interface EventsTableProps {
-  notify(msg: string): void;
-}
+const EventsTable: React.FC = () => {
+  const { data, isLoading } = useGetAllEventsQuery();
 
-const EventsTable: React.FC = ({ notify }: EventsTableProps) => {
-  const { data } = useGetAllEventsQuery();
-  console.log(data);
+  if ((!isLoading && !data) || data?.length === 0) {
+    return (
+      <Container>
+        <div>No events available.</div>
+      </Container>
+    );
+  }
+
   return (
     <Container>
       <table className={styles.table}>
@@ -20,7 +24,6 @@ const EventsTable: React.FC = ({ notify }: EventsTableProps) => {
           {data?.map(event => (
             <TableRow
               key={event.id}
-              // notify={notify}
               eventName={event.name}
               date={event.date}
               category={event.category}

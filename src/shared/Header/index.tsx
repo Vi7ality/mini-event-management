@@ -15,9 +15,6 @@ const Header: React.FC = () => {
               <Link to="/">Home</Link>
             </li>
             <li>
-              <Link to="/contacts">Contacts</Link>
-            </li>
-            <li>
               <Link to="/create-event">+ Add new event</Link>
             </li>
           </ul>

@@ -1,10 +1,9 @@
-import './App.css';
 import 'react-toastify/dist/ReactToastify.css';
 import { lazy } from 'react';
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
-import HomePage from './pages/Home';
 import SharedLayout from './shared/SharedLayout';
 
+const HomePage = lazy(() => import('./pages/Home'));
 const AddEventPage = lazy(() => import('./pages/AddEventPage'));
 const EventPage = lazy(() => import('./pages/EventPage'));
 
