@@ -101,6 +101,6 @@ Make sure you have Node.js and npm installed on your machine.
    \`\`\`
 
 4. **Visit the deployed site:**
-   The app is available at \`https://mini-event-management.vercel.app/\`.
+   The app is available at \`https://mini-event-management.vercel.app/`.
 
 
